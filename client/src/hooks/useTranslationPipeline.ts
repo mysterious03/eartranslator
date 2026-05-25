@@ -69,7 +69,6 @@ export function useTranslationPipeline() {
         const finalTranslation = matched ? matched.targetText : `[Offline] ${transcript}`;
         const sourceLang = matched ? matched.sourceLang : 'hi-IN';
         const sourceName = getLanguageName(sourceLang);
-        const sourceFlag = getLanguageFlag(sourceLang);
 
         // Classify fake voice emotion for disaster/offline context
         const offlineEmotion = {

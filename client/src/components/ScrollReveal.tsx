@@ -49,22 +49,6 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     };
   }, [threshold]);
 
-  // Set translation direction styles
-  const getDirectionStyle = () => {
-    switch (direction) {
-      case 'up':
-        return 'translate-y-8';
-      case 'down':
-        return '-translate-y-8';
-      case 'left':
-        return 'translate-x-8';
-      case 'right':
-        return '-translate-x-8';
-      case 'none':
-      default:
-        return '';
-    }
-  };
 
   return (
     <div

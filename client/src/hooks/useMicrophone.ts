@@ -98,7 +98,9 @@ export function useMicrophone(onAutoStop?: () => void): UseMicrophoneReturn {
     const dataArr = new Uint8Array(analyser.frequencyBinCount);
 
     function loop() {
-      analyser.getByteTimeDomainData(dataArr);
+      const activeAnalyser = analyserNode.current;
+      if (!activeAnalyser) return;
+      activeAnalyser.getByteTimeDomainData(dataArr);
 
       // RMS of waveform — 128 is silence midpoint in time domain
       let sumSq = 0;

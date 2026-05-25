@@ -59,8 +59,7 @@ export async function refineTranslation(
 
 export async function synthesizeSpeech(
   text: string,
-  languageCode: string,
-  outputDeviceId = 'default'
+  languageCode: string
 ): Promise<string> {
   const response = await api.post(
     '/api/speak',

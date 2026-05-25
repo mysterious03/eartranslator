@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useAppStore } from '../store/useAppStore';
-import { Smartphone, Wifi, WifiOff, HelpCircle, Activity } from 'lucide-react';
+
 
 interface NodeCoords {
   id: string;

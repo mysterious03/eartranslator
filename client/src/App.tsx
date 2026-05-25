@@ -1,10 +1,10 @@
-import React, { useEffect, useCallback, useState, useRef } from 'react';
+import { useEffect, useCallback, useState, useRef } from 'react';
 import { useAppStore } from './store/useAppStore';
 import { useMicrophone } from './hooks/useMicrophone';
 import { useTranslationPipeline } from './hooks/useTranslationPipeline';
 import { useAudioDevices } from './hooks/useAudioDevices';
 import { checkHealth, translateText } from './services/sarvamApi';
-import { getLanguageName, getLanguageFlag } from './constants/languages';
+import { getLanguageName } from './constants/languages';
 import { matchOfflinePhrase } from './utils/offlineDictionary';
 
 // Components
@@ -33,16 +33,11 @@ import {
   CheckCircle2, 
   Sparkles, 
   Mic, 
-  Languages, 
   Clock, 
-  ChevronRight, 
   Volume2,
   Terminal,
   Layers,
   WifiOff,
-  Wifi,
-  Share2,
-  Smartphone,
   Play
 } from 'lucide-react';
 
@@ -54,7 +49,7 @@ function App() {
     isRecording, setIsRecording,
     smartMode, setSmartMode,
     smartResult,
-    outputDeviceId, setOutputDeviceId,
+    setOutputDeviceId,
     detectedLanguage, detectedLanguageName, detectedConfidence,
     currentTranscript, currentTranslation,
     status, statusMessage, setStatus,
@@ -63,7 +58,7 @@ function App() {
     // Offline Mesh store integrations
     offlineMode, setOfflineMode,
     detectedEmotion,
-    meshLogs, clearMeshLogs,
+    meshLogs,
   } = useAppStore();
 
   const [liveAnalyser, setLiveAnalyser] = useState<AnalyserNode | null>(null);
