@@ -1,0 +1,12 @@
+{
+  "name": "eartranslator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "busboy": "^1.6.0",
+    "form-data": "^4.0.0",
+    "groq-sdk": "^0.7.0"
+  }
+}
