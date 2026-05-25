@@ -1,10 +1,9 @@
 import axios from 'axios';
 import type { TranscribeResponse, TranslateResponse, SmartRefineResult } from '../types';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
-
+// baseURL is empty — all paths are absolute from site root e.g. /api/transcribe
 const api = axios.create({
-  baseURL: API_BASE,
+  baseURL: '',
   timeout: 30000,
 });
 
@@ -12,7 +11,7 @@ const api = axios.create({
 
 export async function transcribeAudio(audioBlob: Blob): Promise<TranscribeResponse> {
   const formData = new FormData();
-  formData.append('audio', audioBlob, 'audio.webm');
+  formData.append('file', audioBlob, 'audio.webm'); // field name must be 'file'
 
   const { data } = await api.post<TranscribeResponse>('/api/transcribe', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
@@ -36,7 +35,7 @@ export async function translateText(
   return data;
 }
 
-// ─── Groq Smart Refine (deepseek-r1 thinking model) ──────────────────────
+// ─── Groq Smart Refine (llama-3.3-70b) ───────────────────────────────────
 
 export async function refineTranslation(
   originalText: string,
@@ -51,7 +50,7 @@ export async function refineTranslation(
     sourceLang,
     targetLang,
     emotion,
-  }, { timeout: 45000 }); // thinking model takes longer
+  }, { timeout: 45000 });
   return data;
 }
 
